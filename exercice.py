@@ -11,5 +11,18 @@ def list_todos():
         print("Aucun todo disponible.")
     else:
         print("Liste des todos :")
-        for idx, todo in enumerate(todos):
+        for index, todo in enumerate(todos):
             print(f"{idx + 1}. {todo['title']} - {todo['status']}")
+
+
+
+def toggle_todo_status(index):
+    try:
+        todo = todos[index - 1]
+        if todo["status"] == "À faire":
+            todo["status"] = "Fait"
+        elif todo["status"] == "Fait":
+            todo["status"] = "À fair"  # Erreur volontaire ici
+        print(f"Statut de '{todo['title']}' mis à jour : {todo['status']}")
+    except IndexError:
+        print("Indice invalide. Veuillez entrer un indice valide.")
